@@ -1,0 +1,68 @@
+<%- include('partials/header') -%>
+<head>
+  <link rel="stylesheet" href="/css/header.css">
+</head>
+<div class="boton">
+<a href="/profile"><button class="backD">Dashboard</button></a>
+<a href="/song"><button class="backD">Add+</button></a>
+</div>
+<div class="contenedor">
+<% for(var i=0; i<songs.length; i++) { %>
+  <div class="card" style="width: 22rem;">
+    <img src=" <%= songs[i].image%>" class="card-img-top" alt="Artwork">
+    <div class="card-body">
+      <h1 class="card-text">
+        <%= songs[i].songName %>
+      </h1>
+      <span>song name</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text" style="font-size:1.5rem;">
+        <%= songs[i].artistName %>
+      </p>
+      <span>artist name</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text" contenteditable="true">
+        <%= songs[i].songWriter %>
+      </p>
+      <span>songwriter</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <%= songs[i].producer %>
+      </p>
+      <span>producer</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        <%= songs[i].dateRelease %>
+      </p>
+      <span>release date</span>
+    </div>
+    <div class="card-body">
+      <span>lyrics</span>
+      <p class="card-text">
+        <%= songs[i].lyrics %>
+      </p>
+     
+    </div>
+    <div>
+      <a href="" class="btn-warning btn sm-save">Save</a>
+      <form action="/post/deletePost/<%= songs[i]._id %>?_method=DELETE" method="POST">
+        <button class="btn-warning btn sm-delete" type="submit">Delete</button>
+        <%console.log(songs)%>
+      </form>
+    </div>
+
+  </div>
+  <% } %>
+</div>
+    <!-- <script src="js/main.js"></script> -->
+    <!-- <script>
+      function deletes(ciao) {
+        // document.getElementById("demo").innerHTML = "Hello World";
+        console.log(ciao)
+      }
+      </script> -->
+<%- include('partials/footer') -%>
