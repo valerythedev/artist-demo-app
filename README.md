@@ -1,20 +1,12 @@
-# Install
+The Personal Manager application aims to address the organizational challenges faced by artists. The main functionalities of the application include:
 
-`npm install`
+Notifications: To grab the user's attention, the application displays alerts on a screen using an attractive alert style, such as a "span" element.
 
----
+Progress Tracking: The application provides a way to track the progress of various tasks related to song releases. This includes inputs for adding and editing lyrics and artwork. Additionally, the application The ifications to professionals associated with platforms like Genius or Music Match. The application also provides alerts for scheduling and posting updates on various means that can be the first to he new releases.
 
-# Things to add
+Song Management: The application allows users to manage songs by providing options to add, edit, and delete song details. Each song entry includes the song's name, and the user can post updates or edit the song details. There is also a to-do list feature where users can create tasks associated with the song. For example, lessons can be marked as completed using a checkmark and unchecking a task will delete it from the list.
 
-- Create a `.env` file in config folder and add the following as `key = value`
-  - PORT = 2121 (can be any port example: 3000)
-  - DB_STRING = `your database URI`
-  - CLOUD_NAME = `your cloudinary cloud name`
-  - API_KEY = `your cloudinary api key`
-  - API_SECRET = `your cloudinary api secret`
+Release Date Management: The application includes a feature to set song release dates. To enhance the user experience, the application can utilize fancy input elements like calendars, available for free, and implemented using HTML and CSS. This allows the user to select the desired release date easily.
 
----
+By implementing these features, the Personal Manager application aims to provide artists with a comprehensive tool to organize their songs, track their progress, and effectively manage the release process.
 
-# Run
-
-`npm start`
