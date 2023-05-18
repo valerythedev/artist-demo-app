@@ -4,8 +4,8 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const songs = await Post.find({ user: req.user.id });
+      res.render("profile.ejs", { songs: songs, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -26,6 +26,7 @@ module.exports = {
       console.log(err);
     }
   },
+ 
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
@@ -45,7 +46,7 @@ module.exports = {
         lyrics: req.body.lyrics,
         songWriter: req.body.songWriter,
         producer: req.body.producer,
-        user: req.user.id,
+        user: req.user._id,
         dateRelease:req.body.dateRelease
       });
       console.log("Post has been added!");
