@@ -10,51 +10,53 @@
   </div>
   <% } %>
     <div class="page-header text-center">
-      <h1>Let's get your song on the moves</h1>
+      <h1>Edit Songs</h1>
     </div>
     <div class=" style="width: 30%;">
       <a class="btn btn-primary" href="/profile">Return to Dashboard</a>
       <a class="btn btn-primary" href="/songs">Return to Songs</a>
     </div>
     <div class="row">
-
+      <% for (let i = 0; i < songs.length; i++) { %>
       <div class="col-sm-6">
-        <form action="/post/createSong" enctype="multipart/form-data" method="POST"
+        <form action="/post/updateSong/<%= songs[i]._id %>" enctype="multipart/form-data" method="POST"
           class="row justify-content-center mb-4">
           <div class="col-10 mb-3">
             <label for="songName">Song Name</label>
-            <input class="form-control" type="text" placeholder="Enter Song Name" name="songName">
+            <input class="form-control" type="text" placeholder="Enter Song Name" name="songName" value="<%= songs[i].songName %>">
           </div>
           <div class="col-10 mb-3">
             <label for="artistName">Artist Name</label>
-            <input class="form-control" type="text" placeholder="Enter Your Artist Name" name="artistName">
+            <input class="form-control" type="text" placeholder="Enter Your Artist Name" name="artistName" value="<%= songs[i].artistName %>">
           </div>
           <div class="col-10 mb-3">
             <label for="songWriter">Songwriter</label>
-            <input class="form-control" type="text" placeholder="Who Wrote This?" name="songWriter">
+            <input class="form-control" type="text" placeholder="Who Wrote This?" name="songWriter" value="<%= songs[i].songWriter %>">
           </div>
           <div class="col-10 mb-3">
             <label for="producer">Producer</label>
-            <input class="form-control" type="text" placeholder="Enter Producer" name="producer">
+            <input class="form-control" type="text" placeholder="Enter Producer" name="producer" value="<%= songs[i].producer %>">
           </div>
           <div class="col-10 mb-3">
             <label for="dateRelease">When is the world going to hear this?</label>
-            <input class="form-control" type="date" placeholder="date" name="dateRelease">
+            <input class="form-control" type="date" placeholder="date" name="dateRelease" value="<%= songs[i].dateRelease %>" >
           </div>
           <div class="col-10 mb-3">
             <label for="Roll">Lyrics</label>
-            <textarea class="form-control" id="lyrics" rows="5" placeholder="Type your Lyrics" name="lyrics"></textarea>
+            <textarea class="form-control" id="lyrics" rows="5" placeholder="Type your Lyrics" name="lyrics" value="<%= songs[i].lyrics %>"><%= songs[i].lyrics %></textarea>
           </div>
           <div class="col-10 mb-3">
             <label for="imgUpload" class="form-label">Artwork</label>
             <input type="file" class="form-control" id="imageUpload" name="file">
+            <img src="<%= songs[i].image%>" alt="Artwork" class="img-thumnail">
           </div>
+          <input type="hidden" name="old_img"  value="<%= songs[i].image%>" id="">
           <div class="col-8 mb3">
-            <button class="btn btn-success add-btn" value="Upload" type="submit">Submit</button>
+            <button class="btn btn-success add-btn" value="update" type="submit">Submit</button>
           </div>
         </form>
       </div>
-
+      <% } %>
 
     </div>
 

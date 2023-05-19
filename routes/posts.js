@@ -10,6 +10,9 @@ router.get("/:id", ensureAuth, postsController.getPost);
 router.post("/createSong", upload.single("file"), postsController.createSong);
 // all these routes start with /post and then the URL => setup Routes
 
+router.post('/updateSong/:id', postsController.updateSong
+);
+
 router.put("/likePost/:id", postsController.likePost);
 
 // Configure the route for deleting a post

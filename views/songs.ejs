@@ -3,21 +3,21 @@
   <link rel="stylesheet" href="/css/header.css">
 </head>
 <div class="boton">
-<a href="/profile"><button class="backD">Dashboard</button></a>
-<a href="/song"><button class="backD">Add+</button></a>
+<a href="/profile" class="btn btn-primary">Dashboard</a>
+<a href="/song" class="btn btn-primary">Add More</a>
 </div>
 <div class="contenedor">
-<% for(var i=0; i<songs.length; i++) { %>
-  <div class="card" style="width: 22rem;">
-    <img src=" <%= songs[i].image%>" class="card-img-top" alt="Artwork">
-    <div class="card-body">
-      <h1 class="card-text">
+<% for(let i=0; i<songs.length; i++) { %>
+  <div class="card" style="width: 16rem;">
+    <img src=" <%= songs[i].image%>" class="card-img-top" alt="Artwork"> 
+  <div class="card-body"id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+      <h1 class="card-text" contenteditable="true">
         <%= songs[i].songName %>
       </h1>
       <span>song name</span>
     </div>
     <div class="card-body">
-      <p class="card-text" style="font-size:1.5rem;">
+      <p class="card-text" style="font-size:1.5rem;" contenteditable="true">
         <%= songs[i].artistName %>
       </p>
       <span>artist name</span>
@@ -29,29 +29,29 @@
       <span>songwriter</span>
     </div>
     <div class="card-body">
-      <p class="card-text">
+      <p class="card-text" contenteditable="true">
         <%= songs[i].producer %>
       </p>
       <span>producer</span>
     </div>
     <div class="card-body">
-      <p class="card-text">
+      <p class="card-text" contenteditable="true">
         <%= songs[i].dateRelease %>
       </p>
       <span>release date</span>
     </div>
     <div class="card-body">
       <span>lyrics</span>
-      <p class="card-text">
+      <p class="card-text" contenteditable="true">
         <%= songs[i].lyrics %>
       </p>
      
     </div>
     <div>
-      <a href="" class="btn-warning btn sm-save">Save</a>
+      <a href="/edit" class="btn-warning btn sm-edit">Edit</a>
+
       <form action="/post/deletePost/<%= songs[i]._id %>?_method=DELETE" method="POST">
         <button class="btn-warning btn sm-delete" type="submit">Delete</button>
-        <%console.log(songs)%>
       </form>
     </div>
 

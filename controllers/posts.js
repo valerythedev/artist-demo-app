@@ -4,8 +4,8 @@ const Post = require("../models/Post");
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const posts = await Post.find({ user: req.user.id });
-      res.render("profile.ejs", { posts: posts, user: req.user });
+      const songs = await Post.find({ user: req.user.id });
+      res.render("profile.ejs", { songs: songs, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -26,10 +26,20 @@ module.exports = {
       console.log(err);
     }
   },
+  getEdit: async (req, res) => {
+    try {
+      const songs = await Post.find().sort({ createdAt: "desc" }).lean();
+      res.render("edit.ejs", { songs: songs });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      res.render("edit.ejs", { post: post, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -39,14 +49,14 @@ module.exports = {
       const result = await cloudinary.uploader.upload(req.file.path);
       await Post.create({
         songName: req.body.songName,
-        image:result.secure_url,
-        cloudinaryId:result.public_id,
+        image: result.secure_url,
+        cloudinaryId: result.public_id,
         artistName: req.body.artistName,
         lyrics: req.body.lyrics,
         songWriter: req.body.songWriter,
         producer: req.body.producer,
-        user: req.user.id,
-        dateRelease:req.body.dateRelease
+        user: req.user._id,
+        dateRelease: req.body.dateRelease
       });
       console.log("Post has been added!");
       res.redirect("/songs");
@@ -54,6 +64,30 @@ module.exports = {
       console.log(err);
     }
   },
+  updateSong: async (req, res) => {
+    console.log('updateSong:', req.body)
+    try {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      let id = req.params.id
+      await Post.findOneAndUpdate(id, {
+            songName: req.body.songName,
+            // image: result.secure_url,
+            // cloudinaryId: result.public_id,
+            artistName: req.body.artistName,
+            lyrics: req.body.lyrics,
+            songWriter: req.body.songWriter,
+            producer: req.body.producer,
+            user: req.user._id,
+            dateRelease: req.body.dateRelease
+      })
+      console.log("Post has been updated!");
+      res.redirect("/songs");
+
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
   likePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
