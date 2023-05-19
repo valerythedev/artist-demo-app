@@ -9,12 +9,15 @@
   </div>
   <div class="contenedor">
     <% for(let i=0; i<songs.length; i++) { %>
+      <!-- rm action so that it doesn't hit the end point -->
       <form action="/post/updateSong/<%= songs[i]._id %>" enctype="multipart/form-data" method="POST">
+        <!-- give it a class of it's respective song-id with a space -->
         <div class="card" style="width: 16rem;">
           <img src=" <%= songs[i].image%>" class="card-img-top" alt="Artwork">
           <label for="songName">sond name</label>
-          <input type="text" name="songName" id="songName" value="<%= songs[i].songName %>">
+          <input  class="form-field" type="text" name="songName" id="songName" value="<%= songs[i].songName %>">
           <div class="card-body">
+            <!-- add class "Artist.Name". to p tag 6for all the p tags9 -->
             <p class="card-text" style="font-size:1.5rem;" contenteditable="true">
               <%= songs[i].artistName %>
             </p>
@@ -54,7 +57,8 @@
         </div>
       </div>
     <% } %>
+    
     <script src="/api/api.js"></script>
   </div>
-  <%console.log(songs)%>
+ 
     <%- include('partials/footer') -%>
