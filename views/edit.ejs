@@ -1,0 +1,60 @@
+<%- include('partials/header') -%>
+
+  <head>
+    <link rel="stylesheet" href="/css/header.css">
+  </head>
+  <div class="boton">
+    <a href="/profile" class="btn btn-primary">Dashboard</a>
+    <a href="/song" class="btn btn-primary">Add More</a>
+  </div>
+  <div class="contenedor">
+    <% for(let i=0; i<songs.length; i++) { %>
+      <form action="/post/updateSong/<%= songs[i]._id %>" enctype="multipart/form-data" method="POST">
+        <div class="card" style="width: 16rem;">
+          <img src=" <%= songs[i].image%>" class="card-img-top" alt="Artwork">
+          <label for="songName">sond name</label>
+          <input type="text" name="songName" id="songName" value="<%= songs[i].songName %>">
+          <div class="card-body">
+            <p class="card-text" style="font-size:1.5rem;" contenteditable="true">
+              <%= songs[i].artistName %>
+            </p>
+            <span>artist name</span>
+          </div>
+          <div class="card-body">
+            <p class="card-text" contenteditable="true">
+              <%= songs[i].songWriter %>
+            </p>
+            <span>songwriter</span>
+          </div>
+          <div class="card-body">
+            <p class="card-text" contenteditable="true">
+              <%= songs[i].producer %>
+            </p>
+            <span>producer</span>
+          </div>
+          <div class="card-body">
+            <p class="card-text" contenteditable="true">
+              <%= songs[i].dateRelease %>
+            </p>
+            <span>release date</span>
+          </div>
+          <div class="card-body">
+            <span>lyrics</span>
+            <p class="card-text" contenteditable="true">
+              <%= songs[i].lyrics %>
+            </p>
+
+          </div>
+        </form>
+        <div>
+          <button type="submit" class="btn-warning btn sm-save save-btn">Save</button>
+          <form action="/post/deletePost/<%= songs[i]._id %>?_method=DELETE" method="POST">
+            <button class="btn-warning btn sm-delete" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% } %>
+    <script src="/api/api.js"></script>
+  </div>
+  <%console.log(songs)%>
+    <%- include('partials/footer') -%>

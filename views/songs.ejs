@@ -1,64 +1,68 @@
 <%- include('partials/header') -%>
+<head>
+  <link rel="stylesheet" href="/css/header.css">
+</head>
+<div class="boton">
+<a href="/profile" class="btn btn-primary">Dashboard</a>
+<a href="/song" class="btn btn-primary">Add More</a>
+</div>
+<div class="contenedor">
+<% for(let i=0; i<songs.length; i++) { %>
+  <div class="card" style="width: 16rem;">
+    <img src=" <%= songs[i].image%>" class="card-img-top" alt="Artwork"> 
+  <div class="card-body"id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+      <h1 class="card-text" contenteditable="true">
+        <%= songs[i].songName %>
+      </h1>
+      <span>song name</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text" style="font-size:1.5rem;" contenteditable="true">
+        <%= songs[i].artistName %>
+      </p>
+      <span>artist name</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text" contenteditable="true">
+        <%= songs[i].songWriter %>
+      </p>
+      <span>songwriter</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text" contenteditable="true">
+        <%= songs[i].producer %>
+      </p>
+      <span>producer</span>
+    </div>
+    <div class="card-body">
+      <p class="card-text" contenteditable="true">
+        <%= songs[i].dateRelease %>
+      </p>
+      <span>release date</span>
+    </div>
+    <div class="card-body">
+      <span>lyrics</span>
+      <p class="card-text" contenteditable="true">
+        <%= songs[i].lyrics %>
+      </p>
+     
+    </div>
+    <div>
+      <a href="/edit" class="btn-warning btn sm-edit">Edit</a>
 
-  <head>
-    <link rel="stylesheet" href="/css/header.css">
-  </head>
-  <div class="boton">
-    <a href="/profile" class="btn btn-primary">Dashboard</a>
-    <a href="/song" class="btn btn-primary">Add More</a>
+      <form action="/post/deletePost/<%= songs[i]._id %>?_method=DELETE" method="POST">
+        <button class="btn-warning btn sm-delete" type="submit">Delete</button>
+      </form>
+    </div>
+
   </div>
-  <div class="contenedor">
-    <% for(let i=0; i<songs.length; i++) { %>
-      <div class="card" style="width: 15rem;">
-        <img src=" <%= songs[i].image%>" class="card-img-top" alt="Artwork">
-        <div class="card-body">
-          <h1 class="card-text" contenteditable="true">
-            <%= songs[i].songName %>
-          </h1>
-          <span>song name</span>
-        </div>
-        <div class="card-body">
-          <p class="card-text" style="font-size:1.5rem;" contenteditable="true">
-            <%= songs[i].artistName %>
-          </p>
-          <span>artist name</span>
-        </div>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false"aria-controls="collapse multi-collapse">Detetails</button>
-        <div class="collapse multi-collapse">
-          <div class="card-body">
-            <p class="card-text" contenteditable="true">
-              <%= songs[i].songWriter %>
-            </p>
-            <span>songwriter</span>
-          </div>
-          <div class="card-body">
-            <p class="card-text" contenteditable="true">
-              <%= songs[i].producer %>
-            </p>
-            <span>producer</span>
-          </div>
-          <div class="card-body">
-            <p class="card-text" contenteditable="true">
-              <%= songs[i].dateRelease %>
-            </p>
-            <span>release date</span>
-          </div>
-          <div class="card-body">
-            <span>lyrics</span>
-            <p class="card-text" contenteditable="true">
-              <%= songs[i].lyrics %>
-            </p>
-
-          </div>
-          <div>
-            <a href="" class="btn-warning btn sm-save">Save</a>
-            <form action="/post/deletePost/<%= songs[i]._id %>?_method=DELETE" method="POST">
-              <button class="btn-warning btn sm-delete" type="submit">Delete</button>
-            </form>
-          </div>
-
-        </div>
-        <% } %>
-      </div>
-  </div>
-  <%- include('partials/footer') -%>
+  <% } %>
+</div>
+    <!-- <script src="js/main.js"></script> -->
+    <!-- <script>
+      function deletes(ciao) {
+        // document.getElementById("demo").innerHTML = "Hello World";
+        console.log(ciao)
+      }
+      </script> -->
+<%- include('partials/footer') -%>

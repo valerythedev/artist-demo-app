@@ -4,8 +4,11 @@
   <link rel="stylesheet" href="header.css">
 </head>
   <div class="container">
-
-
+<% if (songs){ %>
+  <div class="alert alert-dismissible fade show alert-<%= songs.type %>" role="alert">
+    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+  </div>
+  <% } %>
     <div class="page-header text-center">
       <h1>Let's get your song on the moves</h1>
     </div>
