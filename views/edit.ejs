@@ -10,7 +10,7 @@
   <div class="contenedor">
     <% for(let i=0; i<songs.length; i++) { %>
       <!-- rm action so that it doesn't hit the end point -->
-      <form action="/post/updateSong/<%= songs[i]._id %>" enctype="multipart/form-data" method="POST">
+      <form action="/post/updateSong/<%= songs[i]._id %>?_method=PUT" enctype="multipart/form-data" method="POST">
         <!-- give it a class of it's respective song-id with a space -->
         <div class="card" style="width: 16rem;">
           <img src=" <%= songs[i].image%>" class="card-img-top" alt="Artwork">

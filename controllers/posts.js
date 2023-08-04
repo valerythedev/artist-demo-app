@@ -12,8 +12,8 @@ module.exports = {
   },
   getSong: async (req, res) => {
     try {
-      const songs = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("song.ejs", { songs: songs });
+      const song = await Post.findById(req.params.id);
+      res.render("song.ejs", { song: song });
     } catch (err) {
       console.log(err);
     }

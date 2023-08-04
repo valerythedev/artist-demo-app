@@ -48,7 +48,7 @@
      
     </div>
     <div>
-      <a href="/edit" class="btn-warning btn sm-edit">Edit</a>
+      <a href="/post/song/<%= songs[i]._id %>" class="btn-warning btn sm-edit">Edit</a>
 
       <form action="/post/deletePost/<%= songs[i]._id %>?_method=DELETE" method="POST">
         <button class="btn-warning btn sm-delete" type="submit">Delete</button>

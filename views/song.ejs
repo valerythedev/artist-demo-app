@@ -1,11 +1,11 @@
 
 <%- include('partials/header') -%>
 <head>
-  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="/css/header.css">
 </head>
   <div class="container">
-<% if (songs){ %>
-  <div class="alert alert-dismissible fade show alert-<%= songs.type %>" role="alert">
+<% if (song){ %>
+  <div class="alert alert-dismissible fade show alert-<%= song.type %>" role="alert">
     <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
   </div>
   <% } %>
@@ -14,7 +14,7 @@
     </div>
     <div class=" style="width: 30%;">
       <a class="btn btn-primary" href="/profile">Return to Dashboard</a>
-      <a class="btn btn-primary" href="/songs">Return to Songs</a>
+      <a class="btn btn-primary" href="/song">Return to song</a>
     </div>
     <div class="row">
 
@@ -23,11 +23,11 @@
           class="row justify-content-center mb-4">
           <div class="col-10 mb-3">
             <label for="songName">Song Name</label>
-            <input class="form-control" type="text" placeholder="Enter Song Name" name="songName">
+            <input class="form-control" type="text" placeholder="Enter Song Name" name="songName" value="<%= song?song.songName:"" %>">
           </div>
           <div class="col-10 mb-3">
             <label for="artistName">Artist Name</label>
-            <input class="form-control" type="text" placeholder="Enter Your Artist Name" name="artistName">
+            <input class="form-control" type="text" placeholder="Enter Your Artist Name" name="artistName" value="<%= song?song.artistName: "" %>">
           </div>
           <div class="col-10 mb-3">
             <label for="songWriter">Songwriter</label>
@@ -50,7 +50,7 @@
             <input type="file" class="form-control" id="imageUpload" name="file">
           </div>
           <div class="col-8 mb3">
-            <button class="btn btn-success add-btn" value="Upload" type="submit">Submit</button>
+            <button class="btn btn-success add-btn" value="Upload" type="submit"><%= song?'update':'save' %></button>
           </div>
         </form>
       </div>

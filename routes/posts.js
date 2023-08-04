@@ -12,6 +12,7 @@ router.post("/createSong", upload.single("file"), postsController.createSong);
 
 router.post('/updateSong/:id', postsController.updateSong
 );
+router.get("/song/:id", ensureAuth, postsController.getSong);
 
 router.put("/likePost/:id", postsController.likePost);
 
